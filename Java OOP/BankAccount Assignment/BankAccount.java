@@ -27,10 +27,10 @@ public class BankAccount{
             this.balance -= money;
             BankAccount.allBalance -= money;
         }else{
-            this.noMoney();
+            BankAccount.noMoney();
         }
     }
-    private void  noMoney(){
+    private static void  noMoney(){
         System.out.println("you don't have enough money please withdraw less money");
     }
 
