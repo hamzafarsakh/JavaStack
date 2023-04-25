@@ -1,5 +1,5 @@
 public class Item{
-    String name ;
+    String name;
     double price;
     public Item(){
     }

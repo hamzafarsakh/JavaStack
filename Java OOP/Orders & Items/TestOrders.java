@@ -36,6 +36,7 @@ public class TestOrders {
     order3.ready = true;
 
     System.out.println(order2.items);
+    System.out.println(order1);
     
         // Application Simulations
         // Use this example code to test various orders' updates

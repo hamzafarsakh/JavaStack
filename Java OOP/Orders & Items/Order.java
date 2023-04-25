@@ -15,17 +15,5 @@ public class Order{
         this.name = name;
         this.items = items;
     }
-    // public double printTotal(){
-        // if(items.size() > 0){
-        // for(int i =0; i < items.size(); i++){
-        //     total += items.get(i).price;
-        // }
-
-        // }
-        // else{
-        //     return 0.0;
-        // }
-        // return total;
-    // }
 }
 
