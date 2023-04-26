@@ -36,10 +36,10 @@ public class CoffeeKiosk{
         // Write a while loop to collect all user's order items
         while(!itemNumber.equals("q")) {
             System.out.println("Please enter a menu item index or q to quit:");
-        String itemNumbe = System.console().readLine();
             int itemIndex = Integer.parseInt(itemNumber);
-            
+
             order1.addItem(this.menu.get(itemIndex));
+        itemNumber = System.console().readLine();
         }
         order1.display();
         // After you have collected their order, print the order details 
