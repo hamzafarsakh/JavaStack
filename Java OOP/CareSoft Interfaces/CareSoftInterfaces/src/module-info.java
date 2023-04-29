@@ -5,5 +5,5 @@
  * @author Work
  *
  */
-module com.caresoft.clinicapp {
+module CareSoftInterfaces {
 }
