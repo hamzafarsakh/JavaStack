@@ -6,9 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<h1>Welcome User!</h1>
+<h2>you have visited "http://localhost:8080/" <c:out value="${count}"/> times</h2>
+<a href="http://localhost:8080/reset"></a>
 </body>
 </html>
