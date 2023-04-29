@@ -5,6 +5,11 @@ import java.util.Date;
 
 public class Physician extends User implements HIPAACompliantUser {
 
+	public Physician(Integer id, ArrayList<String> patientNotes) {
+		super(id);
+		this.patientNotes = patientNotes;
+	}
+
 	public Physician(Integer id) {
 		super(id);
 		// TODO Auto-generated constructor stub
