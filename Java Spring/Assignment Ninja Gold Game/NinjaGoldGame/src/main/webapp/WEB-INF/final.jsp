@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>you have visited <a href="/">hhhjk</a> <c:out value="${count}"/> times</h2>
-<a href="http://localhost:8080/reset">hgk</a>
+    <h1>You Won</h1>
+    <form action="/again" method="post">
+        <input type="submit" value="Play Again">
+    </form>
 </body>
 </html>

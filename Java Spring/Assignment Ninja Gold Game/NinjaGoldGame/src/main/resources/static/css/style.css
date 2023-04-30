@@ -1,0 +1,68 @@
+@charset "ISO-8859-1";
+
+
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+
+header{
+    height: 140px;
+}
+
+main{
+    height: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main form{
+    width: 270px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid black;
+}
+
+main form input{
+    width: 80px;
+    height: 27px;
+    background-color: rgb(101, 101, 241);
+    border: 2px solid black;
+    box-shadow: 2px 2px 1px black;
+}
+
+footer{
+    height: 270px;
+}
+header h1{
+    margin-left: 50px;
+}
+footer h1{
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+footer div{
+    width: 92.5%;
+    height: 60%;
+    border: 2px solid black;
+}
+
+.div{
+    overflow: scroll;
+}
+
+.red{
+    color: red;
+    font-size: large;
+    font-weight: bold;
+}
+
+.green{
+    color: green;
+    font-size: large;
+    font-weight: bold;
+}
