@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+C:\Users\Work\Desktop\JavaStack\Java Spring\Book Club\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+4087994825.index
+1986710500.index
+3435648363.index
+868880328.index
+3133330765.index

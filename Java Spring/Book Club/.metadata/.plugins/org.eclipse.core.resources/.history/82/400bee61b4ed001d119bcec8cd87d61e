@@ -1,0 +1,72 @@
+package com.example.demo.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.demo.models.Book;
+import com.example.demo.models.User;
+import com.example.demo.services.MainService;
+import com.example.demo.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
+
+
+@Controller
+public class MainController {
+	 @Autowired
+     private MainService mService;
+	 
+     @Autowired
+     private UserService userServ;
+	 
+	 @GetMapping("/books")
+	 public String books(HttpSession session, Model model) {
+ 		 if( session.getAttribute("user_id") == null) {
+ 			return "redirect:/logout";
+ 		 }
+		 Long user_id = (Long) session.getAttribute("user_id");
+		 User thisUser = userServ.findUserById(user_id);
+		 model.addAttribute("thisUser", thisUser);
+		 List<Book> books1 = mService.allBooks();
+		 model.addAttribute("books1", books1);
+ 		 return "books.jsp";
+	 }
+	 
+	 @GetMapping("/books/new")
+	 public String newBook(HttpSession session, Model model,@ModelAttribute("book") Book book) {
+ 		 if( session.getAttribute("user_id") == null) {
+ 			return "redirect:/logout";
+ 		 }
+		 return "newbooks.jsp";
+	 }
+	 
+	 
+	 @PostMapping("/books/new")
+	 public String addBook(@Valid @ModelAttribute("book") Book book, BindingResult result, Model model) {
+	        if (result.hasErrors()) {
+	            model.addAttribute("book", book);
+	            return "newbooks.jsp";
+	        } else {
+	            mService.addBook(book);
+	            return "redirect:/books/new";
+	        }
+	    }
+	 
+	 @GetMapping("/books/{bookId}")
+	 public String newBook(HttpSession session, Model model,@ModelAttribute("book") Book book) {
+ 		 if( session.getAttribute("user_id") == null) {
+ 			return "redirect:/logout";
+ 		 }
+		 return "newbooks.jsp";
+	 }
+	
+	
+}
