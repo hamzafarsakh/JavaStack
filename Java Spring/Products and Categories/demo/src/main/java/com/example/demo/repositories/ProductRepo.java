@@ -1,0 +1,24 @@
+package com.example.demo.repositories;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.example.demo.models.Categorie;
+import com.example.demo.models.Product;
+
+
+public interface ProductRepo extends CrudRepository<Product, Long> {
+	
+	List<Product> findAll();
+
+	  List<Product> findAllByCategories(Categorie categorie);
+	    
+	  
+	  List<Product> findByCategoriesNotContains(Categorie categorie);
+
+    
+	
+
+
+}

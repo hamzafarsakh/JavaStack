@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import com.example.demo.models.Book;
+import com.example.demo.models.LoginUser;
 import com.example.demo.models.User;
 import com.example.demo.services.MainService;
 import com.example.demo.services.UserService;
@@ -23,11 +24,55 @@ import jakarta.validation.Valid;
 
 @Controller
 public class MainController {
+	@Autowired
+    private MainService userServ;
+	 @GetMapping("/")
+	    public String index(Model model) {
+	        // Bind empty User and LoginUser objects to the JSP
+	        // to capture the form input
+	        model.addAttribute("newUser", new User());
+	        model.addAttribute("newLogin", new LoginUser());
+	        return "index.jsp";
+	    }
+	 
+	 @PostMapping("/register")
+	    public String register(@Valid @ModelAttribute("newUser") User newUser, 
+	            BindingResult result, Model model, HttpSession session) {
+	        userServ.register(newUser, result);
+	        if(result.hasErrors()) {
+	            model.addAttribute("newLogin", new LoginUser());
+	            return "index.jsp";
+	        }
+	        session.setAttribute("user_id", newUser.getId());
+	        return "redirect:/books";
+	    }
+
+	 @PostMapping("/login")
+	    public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
+	            BindingResult result, Model model, HttpSession session) {
+	        User user = userServ.login(newLogin, result);
+	        if(result.hasErrors()) {
+	            model.addAttribute("newUser", new User());
+	            return "index.jsp";
+	        }
+	        session.setAttribute("user_id", user.getId());
+	        return "redirect:/books";
+	    }
+
+
+	 
+	 @GetMapping("/logout")
+	 public String logout(HttpSession session) {
+		 session.invalidate();
+		 return"redirect:/";
+	 }
+	 
+	 
 	 @Autowired
      private MainService mService;
 	 
-     @Autowired
-     private UserService userServ;
+//     @Autowired
+//     private UserService userServ;
 	 
 	 @GetMapping("/books")
 	 public String books(HttpSession session, Model model) {
@@ -72,7 +117,6 @@ public class MainController {
 		 return "showOneBook.jsp";
 	 }
 	 
-//	 /books/${book1.id}/edit
 	
 	 @GetMapping("/books/{id}/edit")
 	 public String editBook(HttpSession session, Model model,@ModelAttribute("book") Book book,@PathVariable("id") Long id) {

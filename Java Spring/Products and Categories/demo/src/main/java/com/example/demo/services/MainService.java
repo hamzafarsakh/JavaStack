@@ -1,0 +1,71 @@
+package com.example.demo.services;
+
+import java.util.List;
+import java.util.Locale.Category;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.models.Categorie;
+import com.example.demo.models.Product;
+import com.example.demo.repositories.CategorieRepo;
+import com.example.demo.repositories.ProductRepo;
+
+
+@Service
+public class MainService {
+	
+	@Autowired
+	private CategorieRepo categorieRepo;
+	
+	@Autowired
+	private ProductRepo productRepo;
+	
+	public List<Categorie> findAllCategories() {
+		return categorieRepo.findAll();
+		}
+	
+	public List<Product> findAllProducts() {
+		return productRepo.findAll();
+		}
+	
+	public Product addProduct(Product product) {
+		return productRepo.save(product);
+		}
+	
+	public Categorie addCategorie(Categorie categorie) {
+		return categorieRepo.save(categorie);
+		}	
+	
+	public List<Categorie> findAllByProducts(Product product){
+		
+		return categorieRepo.findAllByProducts(product);
+	}
+	
+	public List<Product> findByCategoriesNotContains(Categorie categorie){
+		return productRepo.findByCategoriesNotContains(categorie);
+	}
+	
+	public List<Categorie> findByProductsNotContains(Product product){
+		return categorieRepo.findByProductsNotContains(product);
+	}
+	
+	public Product findProduct(Long id) {
+	     Optional<Product> optionalProduct = productRepo.findById(id);
+	     if(optionalProduct.isPresent()) {
+	         return optionalProduct.get();
+	     } else {
+	         return null;
+	     }
+	 }
+	
+	public Categorie findCategorie(Long id) {
+	     Optional<Categorie> optionalCategorie = categorieRepo.findById(id);
+	     if(optionalCategorie.isPresent()) {
+	         return optionalCategorie.get();
+	     } else {
+	         return null;
+	     }
+	 }
+}

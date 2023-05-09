@@ -1,0 +1,58 @@
+package com.example.demo.services;
+
+import java.util.List;
+import java.util.Locale.Category;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.models.Categorie;
+import com.example.demo.models.Product;
+import com.example.demo.repositories.CategorieRepo;
+import com.example.demo.repositories.ProductRepo;
+
+
+@Service
+public class MainService {
+	
+	@Autowired
+	private CategorieRepo categorieRepo;
+	
+	@Autowired
+	private ProductRepo productRepo;
+	
+	public List<Categorie> findAllCategories() {
+		return categorieRepo.findAll();
+		}
+	
+	public List<Product> findAllProducts() {
+		return productRepo.findAll();
+		}
+	
+	public Product addProduct(Product product) {
+		return productRepo.save(product);
+		}
+	
+	public Categorie addCategorie(Categorie categorie) {
+		return categorieRepo.save(categorie);
+		}	
+	
+	public List<Category> findAllByProducts(Product product){
+		
+		return categorieRepo.findAllByProducts(product);
+	}
+	
+	public List<Product> findByCategoriesNotContains(Category category){
+		return productRepo.findByCategoriesNotContains(category);
+	}
+	
+	public Product findProduct(Long id) {
+	     Optional<Product> optionalProduct = productRepo.findById(id);
+	     if(optionalProduct.isPresent()) {
+	         return optionalProduct.get();
+	     } else {
+	         return null;
+	     }
+	 }
+}

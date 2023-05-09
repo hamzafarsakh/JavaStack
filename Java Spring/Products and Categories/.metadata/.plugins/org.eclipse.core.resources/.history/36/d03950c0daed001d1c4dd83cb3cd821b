@@ -1,0 +1,24 @@
+package com.example.demo.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MainService {
+//	
+//	@Autowired
+//	private CategorieRepo categorieRepo;
+//	
+//	@Autowired
+//	private ProductRepo productRepo;
+	
+//	public List<Categorie> findAllCategories() {
+//		return categorieRepo.findAll();
+//		}
+	
+//	public List<Product> findAllProducts() {
+//		return productRepo.findAll();
+//		}
+	
+	
+
+}

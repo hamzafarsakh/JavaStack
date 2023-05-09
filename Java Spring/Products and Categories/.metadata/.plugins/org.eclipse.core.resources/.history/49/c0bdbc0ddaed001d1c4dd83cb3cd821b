@@ -1,0 +1,32 @@
+package com.example.demo.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.models.Categorie;
+import com.example.demo.repositories.CategorieRepo;
+import com.example.demo.repositories.ProductRepo;
+
+
+@Service
+public class MainService {
+//	
+//	@Autowired
+//	private CategorieRepo categorieRepo;
+//	
+//	@Autowired
+//	private ProductRepo productRepo;
+	
+//	public List<Categorie> findAllCategories() {
+//		return categorieRepo.findAll();
+//		}
+	
+//	public List<Product> findAllProducts() {
+//		return productRepo.findAll();
+//		}
+	
+	
+
+}
