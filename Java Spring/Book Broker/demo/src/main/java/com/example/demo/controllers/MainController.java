@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.models.Book;
+import com.example.demo.models.User;
 import com.example.demo.services.MainService;
 
 import jakarta.servlet.http.HttpSession;
@@ -30,6 +31,7 @@ public class MainController {
 	@GetMapping("/bookmarket")
 	public String bookmarket(Model model , HttpSession session) {
 		List<Book> booksNotToken = mainService.findAllNullBook();
+		User user1 = mainService.findUser(null)
 		return "bookmarket.jsp";
 	}
 	
