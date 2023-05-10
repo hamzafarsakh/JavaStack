@@ -1,0 +1,17 @@
+package com.example.demo.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+
+@Controller
+public class MainController {
+//	 @Autowired
+//     private UserService userServ;
+
+	
+	//بلش هون من بعد الصفة الرئيسية
+	
+	
+	
+}

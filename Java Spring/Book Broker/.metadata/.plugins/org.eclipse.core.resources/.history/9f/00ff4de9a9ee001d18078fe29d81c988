@@ -1,0 +1,33 @@
+package com.example.demo.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import jakarta.servlet.http.HttpSession;
+
+
+@Controller
+public class MainController {
+//	 @Autowired
+//     private UserService userServ;
+
+	
+	@GetMapping("/bookmarket")
+	public String bookmarket(Model model , HttpSession session) {
+		//add some contctex
+		return "bookmarket.jsp";
+	}
+	
+	
+	@GetMapping("/books/new")
+	public String newBook(Model model , HttpSession session) {
+		//add some contctex
+		return "createBook.jsp";
+	}
+	
+	
+	
+	
+	
+}
