@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
@@ -49,6 +50,7 @@ public class Book {  //change the class name
     @JoinColumn(name="user_id")
     private User user;
     
+	@Value("${stuff.value:@null}")
     @ManyToOne(fetch = FetchType.LAZY) 
     @JoinColumn(name="userFav_id")
     private User userFav;

@@ -1,5 +1,9 @@
 package com.example.demo.controllers;
 
+
+
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +19,8 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 
+
+
 @Controller
 public class MainController {
 	 @Autowired
@@ -23,24 +29,23 @@ public class MainController {
 	
 	@GetMapping("/bookmarket")
 	public String bookmarket(Model model , HttpSession session) {
-		//add some contctex
+		List<Book> booksNotToken = mainService.findAllNullBook();
 		return "bookmarket.jsp";
 	}
 	
 	
 	@GetMapping("/books/new")
 	public String createBook(Model model , HttpSession session,@ModelAttribute("book") Book book) {
-		//add some contctex
-		return "createBook.jsp";
+		return "new_book.jsp";
 	}
 	
 	@PostMapping("/books/new")
 	public String createBook1( HttpSession session,@Valid @ModelAttribute("book") Book book, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-            model.addAttribute("product", book);
-            return "createBook.jsp";
+            model.addAttribute("book", book);
+            return "new_book.jsp";
         } else {
-            mainService.addBook(book);
+            mainService.createBook(book);
             return "redirect:/books/new";
         }
 	}

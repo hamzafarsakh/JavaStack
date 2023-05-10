@@ -1,8 +1,13 @@
 package com.example.demo.services;
 
+import java.util.*;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.models.Book;
+import com.example.demo.models.User;
 import com.example.demo.repositories.BookRepo;
 import com.example.demo.repositories.UserRepo;
 
@@ -16,6 +21,29 @@ public class MainService {
 	@Autowired
     private BookRepo bookRepo;
 	
+
+    public Book createBook(Book book){
+        return bookRepo.save(book);
+    }
+
+    public List<Book> findAllNullBook(){
+        return bookRepo.findByUserFav(null);
+    }
+
+    public List<Book> findAllBookByUserFav(User user){
+        return bookRepo.findByUserFav(user);
+    }
+
+    public User findUser(Long id) {
+        Optional<User> optionalUser = userRepo.findById(id);
+        if(optionalUser.isPresent()) {
+            return optionalUser.get();
+        } else {
+            return null;
+        }
+    } 
+
+
 	
 	
 	
