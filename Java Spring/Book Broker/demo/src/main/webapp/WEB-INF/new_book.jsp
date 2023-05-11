@@ -11,25 +11,27 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Tacos</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/app.js"></script><!-- change to match your file/naming structure -->
 </head>
 <body>
-    <form:form action="/books/new" method="post" modelAttribute="book">
+   <h1>add a book to your shelf!</h1>
+   <a href="/bookmarket">go back to the shelves</a>
+	<form:form action="/books/new" method="post" modelAttribute="book">
         <form:input type="hidden" path="user" value="${user_id}" class="form-control" />
-        <form:input type="hidden" path="userFav" value="${null}" class="form-control" />
+        <!-- <form:input type="hidden" path="userFav" value="${user_fav_id}" class="form-control" /> -->
         <div class="form-group">
-            <label:input path="title">title :</label>
+            <form:label path="title">title :</form:label>
             <form:input path="title" class="form-control" />
             <form:errors path="title" class="text-danger" />
         </div>
         <div class="form-group">
-            <label:input path="authar">authar:</label>
-            <form:input path="authar" class="form-control" />
-            <form:errors path="authar" class="text-danger" />
+            <form:label path="author">author:</form:label>
+            <form:input path="author" class="form-control" />
+            <form:errors path="author" class="text-danger" />
         </div>
         <div class="form-group">
             <label>description:</label>
@@ -38,6 +40,8 @@
         </div>
         <input type="submit" value="create" class="btn btn-primary" />
     </form:form>
+    
+
 </body>
 </html>
 

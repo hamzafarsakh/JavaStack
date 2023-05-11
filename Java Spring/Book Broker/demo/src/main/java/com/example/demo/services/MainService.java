@@ -42,6 +42,23 @@ public class MainService {
             return null;
         }
     } 
+    
+    public Book findBook(Long id) {
+        Optional<Book> optionalBook = bookRepo.findById(id);
+        if(optionalBook.isPresent()) {
+            return optionalBook.get();
+        } else {
+            return null;
+        }
+    } 
+
+    public List<Book> getDojosWhereIdQQ(Long id){
+        return bookRepo.getDojosWhereIdQQ(id);
+    }
+    
+    public void deleteBook(Book book){
+        bookRepo.delete(book);
+    }
 
 
 	

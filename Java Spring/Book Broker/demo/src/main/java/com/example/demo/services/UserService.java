@@ -61,4 +61,8 @@ public class UserService {
 			return null;
     	}
 	}
+
+    public void createUser(User user){
+        userRepo.save(user);
+    }
 }
